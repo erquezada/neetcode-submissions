@@ -1,0 +1,17 @@
+class Solution:
+    def insertionSort(self, pairs: List[Pair]) -> List[List[Pair]]:
+        results = []
+
+        for i in range(len(pairs)):
+            j = i - 1
+
+            while j >= 0 and pairs[j].key > pairs[j + 1].key:
+                # swap adjacent elements
+                pairs[j], pairs[j + 1] = pairs[j + 1], pairs[j]
+
+                j -= 1
+            
+            # capture current state (shallow copy is enough)
+            results.append(list(pairs))
+
+        return results
